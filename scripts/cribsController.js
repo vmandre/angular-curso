@@ -17,6 +17,24 @@ angular
 			$scope.newListing = {};
 		}
 
+		$scope.editCrib = function(crib) {
+			$scope.editListing = true;
+			$scope.existListing = crib;
+
+		}
+
+		$scope.saveCribEdit = function() {
+			$scope.existListing = {};
+			$scope.editListing = false;
+		}
+
+		$scope.deleteCrib = function(listing) {
+			var index = $scope.cribs.indexOf(listing);
+			$scope.cribs.splice(index, 1);
+			$scope.existListing = {};
+			$scope.editListing = false;
+		}
+
 		cribsFactory.getCribs().success(function(data) {
 			$scope.cribs = data;
 		}).error(function(error) {

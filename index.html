@@ -159,10 +159,120 @@
 				<button class="btn btn-primary listing-button" ng-click="addCrib(newListing)" ng-show="addListing">Add</button>
 
 				<pre>{{ newListing | json }}</pre>
+			</div>
+
+
+			<div class="listing-form" ng-if="editListing">
+				<h3>Edit Listing</h3>
+
+				<div class="row listing-form-row">
+					<div class="col-sm-4">
+						<div class="input-group">
+							<span class="input-group-addon">Address</span>
+							<input 
+								type="text" 
+								placeholder="Enter the address" 
+								class="form-control"
+								ng-model="existListing.address">
+						</div>
+					</div>
+
+					<div class="col-sm-4">
+						<div class="input-group">
+							<span class="input-group-addon">Price</span>
+							<input 
+								type="text" 
+								placeholder="Enter the price" 
+								class="form-control"
+								ng-model="existListing.price">
+						</div>
+					</div>	
+
+					<div class="col-sm-4">
+						<div class="input-group">
+							<span class="input-group-addon">Property Type</span>
+							<select 
+								type="select" 
+								name="propertyType" 
+								id="propertyType" 
+								class="form-control"
+								ng-model="existListing.type">
+									<option>House</option>
+									<option>Condo</option>
+									<option>Duplex</option>
+									<option>Apartment</option>
+								</select>
+						</div>
+					</div>	
+
+				</div>
+				<div class="row listing-form-row">			
+
+					<div class="col-sm-4">
+						<div class="input-group">
+							<span class="input-group-addon">Description</span>
+							<input 
+								type="text" 
+								placeholder="Enter the Description" 
+								class="form-control"
+								ng-model="existListing.details.description">
+						</div>
+					</div>			
+
+					<div class="col-sm-3">
+						<div class="input-group">
+							<span class="input-group-addon">Beds</span>
+							<input 
+								type="text" 
+								placeholder="Bedrooms" 
+								class="form-control"
+								ng-model="existListing.details.bedrooms">
+						</div>
+					</div>									
+
+					<div class="col-sm-3">
+						<div class="input-group">
+							<span class="input-group-addon">Baths</span>
+							<input 
+								type="text" 
+								placeholder="Bathrooms" 
+								class="form-control"
+								ng-model="existListing.details.bathrooms">
+						</div>
+					</div>							
+
+					<div class="col-sm-3">
+						<div class="input-group">
+							<span class="input-group-addon">SqFt</span>
+							<input 
+								type="text" 
+								placeholder="Square Footage" 
+								class="form-control"
+								ng-model="existListing.details.area">
+						</div>
+					</div>								
+				</div>		
+				<button 
+					class="btn btn-primary listing-button" 
+					ng-click="saveCribEdit()" 
+					ng-show="editListing">Save
+				</button>
+
+				<button 
+					class="btn btn-danger listing-button" 
+					ng-click="deleteCrib(existListing)" 
+					ng-show="editListing">Delete
+				</button>				
 
 			</div>
 
+		</div>			
+
+
+
+
 		</div>	
+
 	</div>
 
 
@@ -185,6 +295,12 @@
 									ng-click="showDetails = !showDetails">
 									Details
 					</button>
+
+					<button class="btn btn-xs btn-primary"
+									ng-show="showDetails"
+									ng-click="editCrib(crib)">
+									Edit
+					</button>					
 
 					<button class="btn btn-xs btn-danger"
 									ng-show="showDetails === true"
